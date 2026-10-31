@@ -11,17 +11,8 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/api/.*", "dest": "/server.js" },
-    { "src": "/styles\\.css", "dest": "/server.js" },
-    { "src": "/script\\.js", "dest": "/server.js" },
-    { "src": "/admin\\.html", "dest": "/server.js" },
-    { "src": "/assets/.*", "dest": "/server.js" },
     { "src": "/.*", "dest": "/server.js" }
   ],
-  "functions": {
-    "server.js": {
-      "includeFiles": "**/*"
-    }
-  },
   "headers": [
     {
       "source": "/assets/(.*)",
