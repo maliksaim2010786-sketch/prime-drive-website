@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="PrimeDrive logo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff7958"/>
+      <stop offset="1" stop-color="#ef3f1c"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="200" height="200" rx="46" fill="url(#bg)" transform="rotate(45 110 110)"/>
+  <path d="M42 133h136l-15-55H75l-33 55Z" fill="#fff"/>
+  <path d="M72 84h83l14 49H58l14-49Z" fill="#171717"/>
+  <path d="M91 91h46l12 32H78l13-32Z" fill="#dfe5ea"/>
+  <circle cx="69" cy="137" r="20" fill="#171717"/>
+  <circle cx="151" cy="137" r="20" fill="#171717"/>
+  <circle cx="69" cy="137" r="8" fill="#fff"/>
+  <circle cx="151" cy="137" r="8" fill="#fff"/>
+  <path d="M70 70h80" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M110 47v23" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+</svg>
