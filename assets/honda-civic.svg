@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#dceaf1"/><stop offset="1" stop-color="#f6f8f8"/></linearGradient>
+    <linearGradient id="paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce9ef"/><stop offset="0.55" stop-color="#9fb4c0"/><stop offset="1" stop-color="#718996"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#243640"/><stop offset="1" stop-color="#090f13"/></linearGradient>
+    <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="900" height="600" fill="url(#sky)"/>
+  <path d="M0 430H900V600H0Z" fill="#cbd2d4"/>
+  <path d="M0 476H900" stroke="#eef0ef" stroke-width="9" opacity=".9"/>
+  <ellipse cx="455" cy="478" rx="340" ry="34" fill="#586b73" opacity=".28" filter="url(#shadow)"/>
+  <!-- Honda Civic-inspired side profile -->
+  <path d="M92 386c22-51 63-78 126-91l95-64c34-23 67-34 108-34h126c42 0 76 15 105 46l64 70 55 18c34 11 52 31 55 61l-6 35H96Z" fill="url(#paint)" stroke="#506874" stroke-width="7"/>
+  <path d="M264 296l104-65c31-19 58-27 91-27h74c37 0 67 13 91 39l54 57Z" fill="url(#glass)" stroke="#506874" stroke-width="6"/>
+  <path d="M451 206v94M623 214l55 88" stroke="#b8c5cb" stroke-width="7" opacity=".85"/>
+  <path d="M284 302h339" stroke="#edf3f5" stroke-width="5" opacity=".7"/>
+  <path d="M93 390h725l-21 66H112Z" fill="#9fb4c0" stroke="#506874" stroke-width="7"/>
+  <path d="M650 390l91 13 49 8-17 45H650Z" fill="#d9e5e9" opacity=".8"/>
+  <path d="M109 393h100l-34 32H96Z" fill="#e9f4f7" opacity=".95"/>
+  <path d="M104 382h92v18h-98Z" fill="#27363e"/>
+  <path d="M702 337h91l31 17H696Z" fill="#252d32"/>
+  <path d="M728 347h69l18 8H716Z" fill="#f4fbff"/>
+  <path d="M432 319v137M624 316l-2 139" stroke="#647d89" stroke-width="4" opacity=".5"/>
+  <circle cx="241" cy="452" r="70" fill="#11161a"/><circle cx="241" cy="452" r="43" fill="#bcc8cd"/><circle cx="241" cy="452" r="20" fill="#61737b"/><circle cx="241" cy="452" r="8" fill="#d8e0e3"/>
+  <circle cx="672" cy="452" r="70" fill="#11161a"/><circle cx="672" cy="452" r="43" fill="#bcc8cd"/><circle cx="672" cy="452" r="20" fill="#61737b"/><circle cx="672" cy="452" r="8" fill="#d8e0e3"/>
+  <path d="M169 452h-58M744 452h59" stroke="#506874" stroke-width="8"/>
+  <path d="M352 318h61" stroke="#506874" stroke-width="7" stroke-linecap="round"/>
+  <path d="M501 318h57" stroke="#506874" stroke-width="7" stroke-linecap="round"/>
+  <path d="M85 422c0 29 17 44 47 44h42" fill="none" stroke="#dce8ed" stroke-width="7"/>
+</svg>

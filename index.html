@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PrimeDrive premium car rental in Lahore and across Pakistan.">
+  <title>PrimeDrive | Premium Car Rentals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar"><span>Available 24/7 across Pakistan</span><a href="tel:+923001234567">+92 300 1234567</a></div>
+  <header class="header" id="header">
+    <a href="#home" class="brand" aria-label="PrimeDrive home"><span class="brand-mark">P</span><span>PRIME<span>DRIVE</span></span></a>
+    <nav class="nav" id="nav">
+      <a href="#home" class="active">Home</a><a href="#cars">Our Cars</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions"><button class="theme-btn" id="themeBtn" aria-label="Toggle theme">☾</button><a class="btn btn-small" href="#booking">Book Now</a></div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <div class="eyebrow"><i></i> Premium rentals, unforgettable journeys</div>
+        <h1>Find Your<br><em>Perfect Ride.</em></h1>
+        <p>Explore Pakistan in comfort and style. Luxury, SUVs, and everyday cars—ready whenever you are.</p>
+        <a class="btn" href="#booking">Book Your Car <span>→</span></a>
+      </div>
+      <div class="hero-stats"><div><strong>150+</strong><span>Premium cars</span></div><div><strong>12k+</strong><span>Happy clients</span></div><div><strong>24/7</strong><span>Support</span></div></div>
+    </section>
+
+    <section class="booking-panel reveal" id="booking">
+      <form id="searchForm">
+        <label><span>Pickup Location</span><div class="field">⌖ <input required value="Lahore Airport"></div></label>
+        <label><span>Drop-off Location</span><div class="field">⌖ <input required value="Gulberg, Lahore"></div></label>
+        <label><span>Pickup Date</span><div class="field">▣ <input required type="datetime-local" id="pickupDate"></div></label>
+        <label><span>Return Date</span><div class="field">▣ <input required type="datetime-local" id="returnDate"></div></label>
+        <label><span>Maximum Price / Day</span><div class="field">₨ <input required type="number" id="maxPrice" min="1000" step="500" value="50000" placeholder="e.g. 15000"></div></label>
+        <label><span>Rental Service</span><div class="field">♟ <select required id="serviceType"><option value="Self Drive">Self Drive</option><option value="With Driver">Car With Driver</option></select></div></label>
+        <button class="btn search-btn" type="submit">Search Cars <span>→</span></button>
+      </form>
+    </section>
+
+    <section class="section" id="cars">
+      <div class="section-head reveal"><div><span class="section-kicker">OUR FLEET</span><h2>Choose your perfect ride</h2></div><div class="filter-row" id="filters"><button class="filter active" data-filter="all">All Cars</button><button class="filter" data-filter="luxury">Luxury</button><button class="filter" data-filter="suv">SUV</button><button class="filter" data-filter="economy">Economy</button><button class="filter" data-filter="sports">Sports</button><button class="filter" data-filter="family">Family</button></div></div>
+      <p class="fleet-summary" id="fleetSummary" aria-live="polite"></p>
+      <div class="car-grid" id="carGrid"></div>
+    </section>
+
+    <section class="experience" id="about">
+      <div class="experience-image reveal"><div class="float-card"><strong>10+</strong><span>Years of excellence</span></div></div>
+      <div class="experience-copy reveal"><span class="section-kicker">WHY CHOOSE US</span><h2>More than a rental.<br>A better journey.</h2><p>Every vehicle is carefully inspected, professionally cleaned and delivered with complete peace of mind.</p>
+        <div class="benefits"><div><b>01</b><span><strong>Premium quality</strong><small>Latest models, impeccably maintained.</small></span></div><div><b>02</b><span><strong>Transparent pricing</strong><small>No hidden charges. No surprises.</small></span></div><div><b>03</b><span><strong>24/7 road support</strong><small>We are always just one call away.</small></span></div></div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="pricing">
+      <div class="section-head centered reveal"><div><span class="section-kicker">SIMPLE PRICING</span><h2>Flexible plans for every journey</h2></div></div>
+      <div class="price-grid"><article><span>DAILY</span><h3>From Rs. 5,000</h3><p>Perfect for quick city trips</p><ul><li>✓ 24-hour rental</li><li>✓ 200 km included</li><li>✓ Free city pickup</li></ul><button class="outline-btn" onclick="openBooking('Economy Car')">Choose Plan</button></article><article class="popular"><div class="popular-tag">MOST POPULAR</div><span>WEEKLY</span><h3>From Rs. 30,000</h3><p>Save on longer journeys</p><ul><li>✓ 7-day rental</li><li>✓ 1,200 km included</li><li>✓ Complimentary insurance</li></ul><button class="btn" onclick="openBooking('Family Car')">Choose Plan</button></article><article><span>MONTHLY</span><h3>From Rs. 110,000</h3><p>Best value for extended use</p><ul><li>✓ 30-day rental</li><li>✓ 4,000 km included</li><li>✓ Priority support</li></ul><button class="outline-btn" onclick="openBooking('SUV')">Choose Plan</button></article></div>
+      <p class="policy">Security deposit and taxes may apply. Additional km: Rs. 15/km • Cancellation free up to 24 hours before pickup.</p>
+    </section>
+
+    <section class="reviews"><div class="review-head"><div><span class="section-kicker">TESTIMONIALS</span><h2>Trusted by thousands</h2></div><div class="stars">★★★★★ <span>4.9/5 from 1,200+ reviews</span></div></div><div class="review-grid"><blockquote>“Excellent service from start to finish. The car was spotless and the team was incredibly professional.”<footer><b>Sarah Khan</b><span>Verified customer</span></footer></blockquote><blockquote>“Booked a Fortuner for our northern trip. Smooth process, fair price and 24/7 support.”<footer><b>Ahmed Raza</b><span>Verified customer</span></footer></blockquote><blockquote>“Their luxury fleet is outstanding. Perfect experience for an important family event.”<footer><b>Mariam Ali</b><span>Verified customer</span></footer></blockquote></div></section>
+
+    <section class="contact" id="contact"><div><span class="section-kicker">GET IN TOUCH</span><h2>Ready for the road?</h2><p>Our team is available around the clock to help plan your journey.</p></div><div class="contact-actions"><a href="https://wa.me/923001234567" target="_blank" class="btn whatsapp">◉ WhatsApp Booking</a><a href="tel:+923001234567" class="outline-btn">Call +92 300 1234567</a></div></section>
+  </main>
+
+  <footer class="footer"><div class="footer-brand"><a href="#home" class="brand light"><span class="brand-mark">P</span><span>PRIME<span>DRIVE</span></span></a><p>Premium car rentals for every journey across Pakistan.</p></div><div><strong>Explore</strong><a href="#cars">Our Cars</a><a href="#pricing">Pricing</a><a href="#about">About Us</a></div><div><strong>Services</strong><a href="#booking">Self Drive</a><a href="#booking">With Driver</a><a href="/admin.html">Owner Dashboard</a></div><div><strong>Contact</strong><span>45 Main Boulevard, Gulberg, Lahore</span><a href="mailto:hello@primedrive.pk">hello@primedrive.pk</a><span>Mon–Sun: 24 hours</span></div><div class="copyright">© 2026 PrimeDrive. All rights reserved.</div></footer>
+
+  <div class="modal" id="bookingModal" aria-hidden="true"><div class="modal-card"><button class="close" id="closeModal">×</button><span class="section-kicker">RESERVE YOUR RIDE</span><h2>Complete your booking</h2><form id="bookingForm"><div class="form-grid"><label>Full Name<input required placeholder="Your name"></label><label>Phone Number<input required type="tel" placeholder="+92 300 0000000"></label><label>Selected Car<select id="carSelect"></select></label><label>Service<select id="serviceSelect"><option value="Self Drive">Self Drive</option><option value="With Driver">Car With Driver</option></select></label><label>Pickup Location<input required placeholder="City or address"></label><label>Drop-off Location<input required placeholder="City or address"></label><label>Pickup Date<input required type="date"></label><label>Return Date<input required type="date"></label></div><div class="booking-summary"><span>Estimated Total</span><strong id="estimatedPrice">Rs. 0</strong></div><button class="btn full" type="submit">Confirm Booking Request</button><small>We will call you to confirm availability and payment.</small></form></div></div>
+  <div class="video-modal" id="videoModal" aria-hidden="true"><div class="video-modal-card"><button class="close" id="closeVideo" aria-label="Close video">×</button><h2 id="videoTitle">Car video</h2><video id="carVideoPlayer" controls autoplay playsinline></video></div></div>
+  <div class="toast" id="toast">Booking request received! We'll contact you shortly.</div>
+  <script src="script.js"></script>
+</body>
+</html>
