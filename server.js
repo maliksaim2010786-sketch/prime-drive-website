@@ -27,7 +27,7 @@ const handler=async(req,res)=>{
  if(url.pathname==='\/api\/bookings'&&req.method==='GET'){if(!authorized(req))return json(res,401,{error:'Unauthorized'}) ;return json(res,200,readBookings())}
  let file=url.pathname==='/'?'index.html':decodeURIComponent(url.pathname.slice(1));file=path.normalize(file).replace(/^(\.\.[\/\\])+/, '');const full=path.join(__dirname,file);
  if(!full.startsWith(__dirname))return json(res,403,{error:'Forbidden'});
- fs.readFile(full,(err,data)=>{if(err){res.writeHead(404);return res.end('Not found')}res.writeHead(200,{'Content-Type':MIME[path.extname(full)]||'application/octet-stream'});res.end(data)});
+ fs.readFile(full,(err,data)=>{if(err){res.writeHead(404);return res.end('Not found')}const ext=path.extname(full);const cache=ext==='.css'||ext==='.js'?'public, max-age=86400':ext.match(/\.(jpg|jpeg|svg|mp4)$/i)?'public, max-age=31536000, immutable':undefined;res.writeHead(200,{'Content-Type':MIME[ext]||'application/octet-stream',...(cache?{'Cache-Control':cache}:{})});res.end(data)});
 };
 
 if (require.main === module) {
