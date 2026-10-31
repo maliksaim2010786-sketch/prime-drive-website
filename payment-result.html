@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Status | PrimeDrive</title>
+  <style>body{font-family:Arial,sans-serif;margin:0;background:#f5f5f2;color:#121212;display:grid;place-items:center;min-height:100vh}.card{background:#fff;padding:32px;border-radius:16px;width:min(480px,calc(100% - 40px));text-align:center;box-shadow:0 12px 40px #0002}.btn{display:inline-block;margin-top:16px;padding:12px 20px;border-radius:8px;background:#ff5b35;color:#fff;text-decoration:none}</style>
+</head>
+<body>
+  <main class="card">
+    <h1>Payment status received</h1>
+    <p>Your booking and payment status can be confirmed from PrimeDrive.</p>
+    <p id="booking"></p>
+    <a class="btn" href="/">Return to PrimeDrive</a>
+  </main>
+  <script>const id=new URLSearchParams(location.search).get('booking');document.getElementById('booking').textContent=id?`Booking reference: ${id}`:'';</script>
+</body>
+</html>

@@ -33,4 +33,24 @@ function renderBudgetCars(list){grid.innerHTML=list.map(c=>{const price=dailyRat
 document.getElementById('searchForm').onsubmit=e=>{e.preventDefault();const maxPrice=Number(document.getElementById('maxPrice').value);if(!maxPrice||maxPrice<=0){alert('Please enter a valid daily budget.');return}const matchingCars=cars.filter(c=>dailyRate(c)<=maxPrice).sort((a,b)=>dailyRate(a)-dailyRate(b));renderBudgetCars(matchingCars);fleetSummary.textContent=matchingCars.length?`${matchingCars.length} car${matchingCars.length===1?'':'s'} available within Rs. ${maxPrice.toLocaleString()} per day`:`No car available within Rs. ${maxPrice.toLocaleString()} per day`;document.getElementById('cars').scrollIntoView({behavior:'smooth',block:'start'});};
 serviceType.onchange=()=>{if(fleetSummary.textContent)document.getElementById('searchForm').requestSubmit()};
 select.onchange=calculate;document.getElementById('serviceSelect').onchange=calculate;document.querySelectorAll('.form-grid input[type=date]').forEach(i=>i.onchange=calculate);function calculate(){const car=cars.find(c=>c.name===select.value),dates=document.querySelectorAll('.form-grid input[type=date]'),start=new Date(dates[0].value),end=new Date(dates[1].value);let days=1;if(dates[0].value&&dates[1].value)days=Math.max(1,Math.ceil((end-start)/86400000));const driverCharge=document.getElementById('serviceSelect').value==='With Driver'?3000:0;document.getElementById('estimatedPrice').textContent='Rs. '+(((car?.price||0)+driverCharge)*days).toLocaleString()}
-document.getElementById('bookingForm').onsubmit=async e=>{e.preventDefault();const fields=e.target.querySelectorAll('input,select');const pickupDate=fields[6].value,returnDate=fields[7].value;if(!pickupDate||!returnDate||new Date(returnDate)<=new Date(pickupDate)){alert('Return date must be after pickup date.');return}const button=e.target.querySelector('button[type="submit"]');button.disabled=true;button.textContent='Saving booking...';try{const response=await fetch('/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:fields[0].value,phone:fields[1].value,car:fields[2].value,service:fields[3].value,pickup:fields[4].value,dropoff:fields[5].value,pickupDate,returnDate,total:document.getElementById('estimatedPrice').textContent.replace(/[^0-9]/g,'')})});const result=await response.json();if(!response.ok)throw new Error(result.error||'Booking could not be saved');modal.classList.remove('open');const toast=document.getElementById('toast');toast.textContent=`Booking ${result.booking.id} confirmed! Owner has received it.`;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),4500);e.target.reset()}catch(error){alert(error.message)}finally{button.disabled=false;button.textContent='Confirm Booking Request'}};
+document.getElementById('bookingForm').onsubmit=async e=>{
+ e.preventDefault();
+ const pickupDate=document.getElementById('bookingPickupDate').value;
+ const returnDate=document.getElementById('bookingReturnDate').value;
+ if(!pickupDate||!returnDate||new Date(returnDate)<=new Date(pickupDate)){alert('Return date must be after pickup date.');return}
+ const button=e.target.querySelector('button[type="submit"]');
+ button.disabled=true;button.textContent='Saving booking...';
+ const booking={name:document.getElementById('bookingName').value,phone:document.getElementById('bookingPhone').value,car:document.getElementById('carSelect').value,service:document.getElementById('serviceSelect').value,pickup:document.getElementById('bookingPickup').value,dropoff:document.getElementById('bookingDropoff').value,pickupDate,returnDate,payment:document.getElementById('bookingPayment').value,total:document.getElementById('estimatedPrice').textContent.replace(/[^0-9]/g,'')};
+ try{
+  const response=await fetch('/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(booking)});
+  const result=await response.json();
+  if(!response.ok)throw new Error(result.error||'Booking could not be saved');
+  if(booking.payment==='EasyPaisa Online'){
+   const paymentResponse=await fetch('/api/payments/easypaisa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({bookingId:result.booking.id,total:result.booking.total,phone:booking.phone,name:booking.name})});
+   const payment=await paymentResponse.json();
+   if(!paymentResponse.ok)throw new Error(payment.error||'EasyPaisa payment could not be started');
+   window.location.assign(payment.url);return;
+  }
+  modal.classList.remove('open');const toast=document.getElementById('toast');toast.textContent=`Booking ${result.booking.id} confirmed! Owner has received it.`;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),4500);e.target.reset();
+ }catch(error){alert(error.message)}finally{button.disabled=false;button.textContent='Confirm Booking Request'};
+};
